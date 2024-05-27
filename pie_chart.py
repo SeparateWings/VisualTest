@@ -2,6 +2,7 @@ import random
 from matplotlib import pyplot
 from matplotlib.animation import FuncAnimation
 
+# hot 2205694 warm 5995488 cold 0
 def read_log_file(file_path):
     with open(file_path, 'r') as file:
         for line in file:
@@ -28,10 +29,11 @@ def update(num):
     if sum(data) == 0:
         ax.text(0.5, 0.5, 'All values are zero', horizontalalignment='center', verticalalignment='center', transform=ax.transAxes)
         return ax,
+    print(data)
     patches, texts = ax.pie(data, colors=colors, startangle=90)
     ax.legend(patches, labels, loc="best")
     return ax,
 
-animation = FuncAnimation(figure, update, frames=range(10), repeat=False)
+animation = FuncAnimation(figure, update, repeat=False, save_count=10)
 
 pyplot.show()
