@@ -12,7 +12,7 @@ st.set_page_config(
 )
 
 # read csv from a gitHub repo
-# dataset_url = "https://raw.githubusercontent.com/Lexie88rus/bank-marketing-analysis/master/bank.csv"
+dataset_url = "https://raw.githubusercontent.com/Lexie88rus/bank-marketing-analysis/master/bank.csv"
 
 # read csv from a URL
 @st.cache_data
@@ -52,26 +52,26 @@ for seconds in range(200):
     with placeholder.container():
 
         # create three columns
-        kpi1, kpi2, kpi3 = st.columns(3)
+        # kpi1, kpi2, kpi3 = st.columns(3)
 
         # fill in those three columns with respective metrics or KPIs
-        kpi1.metric(
-            label="Age ⏳",
-            value=round(avg_age),
-            delta=round(avg_age) - 10,
-        )
+        # kpi1.metric(
+        #     label="Age ⏳",
+        #     value=round(avg_age),
+        #     delta=round(avg_age) - 10,
+        # )
 
-        kpi2.metric(
-            label="Married Count 💍",
-            value=int(count_married),
-            delta=-10 + count_married,
-        )
+        # kpi2.metric(
+        #     label="Married Count 💍",
+        #     value=int(count_married),
+        #     delta=-10 + count_married,
+        # )
 
-        kpi3.metric(
-            label="A/C Balance ＄",
-            value=f"$ {round(balance,2)} ",
-            delta=-round(balance / count_married) * 100,
-        )
+        # kpi3.metric(
+        #     label="A/C Balance ＄",
+        #     value=f"$ {round(balance,2)} ",
+        #     delta=-round(balance / count_married) * 100,
+        # )
 
         # create two columns for charts
         fig_col1, fig_col2 = st.columns(2)
@@ -87,6 +87,4 @@ for seconds in range(200):
             fig2 = px.histogram(data_frame=df, x="age_new")
             st.write(fig2)
 
-        st.markdown("### Detailed Data View")
-        st.dataframe(df)
         time.sleep(1)
